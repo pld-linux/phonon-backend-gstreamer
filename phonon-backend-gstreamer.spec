@@ -4,22 +4,23 @@
 Summary:	GStreamer backend for Phonon
 Summary(pl.UTF-8):	Wtyczka GStreamera dla Phonona
 Name:		phonon-backend-gstreamer
-Version:	4.5.1
+Version:	4.6.2
 Release:	1
 License:	LGPL 2.1
 Group:		Libraries
-Source0:	ftp://ftp.kde.org/pub/kde/stable/phonon/%{name}/%{version}/src/%{name}-%{version}.tar.bz2
-# Source0-md5:	021cf7740208e7212b7ce91adb6a349b
+Source0:	ftp://ftp.kde.org/pub/kde/stable/phonon/%{name}/%{version}/src/%{name}-%{version}.tar.xz
+# Source0-md5:	8c08875d10952bc5685bcec8de3acb2d
 #URL:		http://
 BuildRequires:	automoc4 >= 0.9.88
 BuildRequires:	cmake >= 2.8.0
-BuildRequires:	gstreamer-plugins-base-devel >= 0.10.0
+BuildRequires:	gstreamer0.10-plugins-base-devel
 BuildRequires:	kde4-kdebase-workspace-devel >= %{kdever}
 BuildRequires:	kde4-kdelibs-devel >= %{kdever}
 BuildRequires:	phonon-devel >= 4.4.4
 BuildRequires:	qt4-build >= %{qtver}
 BuildRequires:	qt4-qmake >= %{qtver}
 BuildRequires:	rpmbuild(macros) >= 1.600
+Suggests:	gstreamer0.10-pulseaudio
 Provides:	qt4-phonon-backend = %{version}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
