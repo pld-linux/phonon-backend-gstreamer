@@ -4,12 +4,12 @@
 Summary:	GStreamer backend for Phonon
 Summary(pl.UTF-8):	Wtyczka GStreamera dla Phonona
 Name:		phonon-backend-gstreamer
-Version:	4.6.3
+Version:	4.8.2
 Release:	1
 License:	LGPL 2.1
 Group:		Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/stable/phonon/%{name}/%{version}/src/%{name}-%{version}.tar.xz
-# Source0-md5:	d7b0b6245f380347c52c09033a814931
+# Source0-md5:	ce441035dc5a00ffaac9a64518ab5c62
 #URL:		http://
 BuildRequires:	automoc4 >= 0.9.88
 BuildRequires:	cmake >= 2.8.0
