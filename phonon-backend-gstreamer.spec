@@ -14,7 +14,7 @@ Version:	4.8.2
 Release:	4
 License:	LGPL 2.1
 Group:		Libraries
-Source0:	ftp://ftp.kde.org/pub/kde/stable/phonon/phonon-backend-gstreamer/%{version}/src/%{name}-%{version}.tar.xz
+Source0:	http://download.kde.org/stable/phonon/phonon-backend-gstreamer/%{version}/src/%{name}-%{version}.tar.xz
 # Source0-md5:	ce441035dc5a00ffaac9a64518ab5c62
 BuildRequires:	OpenGL-devel
 BuildRequires:	cmake >= 2.8.6
