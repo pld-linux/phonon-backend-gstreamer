@@ -5,26 +5,29 @@
 
 %define		phonon_ver	4.7.0
 %define		qt4_ver		4.7.1
-%define		qt5_ver		5.0.0
+%define		qt5_ver		5.2.0
 
 Summary:	GStreamer backend for Phonon
 Summary(pl.UTF-8):	Wtyczka GStreamera dla Phonona
 Name:		phonon-backend-gstreamer
-Version:	4.8.2
-Release:	5
+# 4.9.x is the last supporting qt4 phonon
+Version:	4.9.1
+Release:	1
 License:	LGPL 2.1
 Group:		Libraries
-Source0:	http://download.kde.org/stable/phonon/phonon-backend-gstreamer/%{version}/src/%{name}-%{version}.tar.xz
-# Source0-md5:	ce441035dc5a00ffaac9a64518ab5c62
+Source0:	https://download.kde.org/Attic/phonon/phonon-backend-gstreamer/%{version}/%{name}-%{version}.tar.xz
+# Source0-md5:	b521b0a824e4d5451e476b8127140f60
 BuildRequires:	OpenGL-devel
-BuildRequires:	cmake >= 2.8.6
+BuildRequires:	cmake >= 2.8.9
 BuildRequires:	glib2-devel >= 2.0
 BuildRequires:	gstreamer-devel >= 1.0
 BuildRequires:	gstreamer-plugins-base-devel >= 1.0
 BuildRequires:	libxml2-devel >= 2
 BuildRequires:	pkgconfig
-BuildRequires:	rpmbuild(macros) >= 1.600
+BuildRequires:	rpmbuild(macros) >= 1.605
 BuildRequires:	sed >= 4.0
+BuildRequires:	tar >= 1:1.22
+BuildRequires:	xz
 %if %{with qt4}
 BuildRequires:	QtCore-devel >= %{qt4_ver}
 BuildRequires:	QtGui-devel >= %{qt4_ver}
@@ -38,7 +41,9 @@ BuildRequires:	Qt5Core-devel >= %{qt5_ver}
 BuildRequires:	Qt5Gui-devel >= %{qt5_ver}
 BuildRequires:	Qt5OpenGL-devel >= %{qt5_ver}
 BuildRequires:	Qt5Widgets-devel >= %{qt5_ver}
+BuildRequires:	kf5-extra-cmake-modules
 BuildRequires:	phonon-qt5-devel >= %{phonon_ver}
+BuildRequires:	phonon-qt5-devel < 4.11
 BuildRequires:	qt5-build >= %{qt5_ver}
 BuildRequires:	qt5-qmake >= %{qt5_ver}
 %endif
@@ -68,7 +73,7 @@ GStreamer backend for Qt5 Phonon.
 Wtyczka GStreamera dla Phonona opartego na Qt5.
 
 %prep
-%setup -q
+%setup -q -n phonon-gstreamer-%{version}
 
 # Use PHONON_NO_GRAPHICSVIEW because videographicsobject.cpp is not ready for gstreamer 1.0;
 # as of 4.8.2, this setting is not exported as option, so hardcode it.
@@ -78,7 +83,7 @@ sed -i -e "15i set(PHONON_NO_GRAPHICSVIEW ON)" gstreamer/CMakeLists.txt
 %if %{with qt4}
 install -d build-qt4
 cd build-qt4
-%cmake -DPHONON_NO_GRAPHICSVIEW=ON ..
+%cmake ..
 %{__make}
 cd ..
 %endif
